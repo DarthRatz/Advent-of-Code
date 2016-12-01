@@ -1,61 +1,56 @@
 ﻿using System;
+using System.Net;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ConsoleApplication1
-{
-    class AdventOfCode2016Day1
-    {
-        public static List<String> AllPostions = new List<String>();
+namespace adventofcode {
+    class AdventOfCode2016Day1 {
+        public static List < String > AllPostions = new List < String > ();
 
-        public struct position
-        {
+        public class Position {
             public int X, Y;
             public char Direction;
 
-            /*public position()
-            {
+            public Position() {
                 this.X = 0;
                 this.Y = 0;
                 this.Direction = 'N';
-            }*/
+            }
 
-            public position(int xIn, int yIn, char directionIn)
-            {
+            public Position(int xIn, int yIn, char directionIn) {
                 this.X = xIn;
                 this.Y = yIn;
                 this.Direction = directionIn;
-            }  
-
-            public override string ToString()
-            {
-                return "X:"+X.ToString() + " Y:" + Y.ToString();
             }
 
-            public bool Equals(position pos)
-            {
+            public override string ToString() {
+                return "X:" + X.ToString() + " Y:" + Y.ToString();
+            }
+
+            public bool Equals(Position pos) {
                 return X == pos.X && Y == pos.Y;
             }
+        }
 
+        static void Main(string[] args) {
+            Position startingPosition = new Position();
+            Position pos = startingPosition;
 
-        } 
+            Console.Out.WriteLine("Starting position:");
+            Console.Out.WriteLine(startingPosition.ToString());
 
-        static void Main(string[] args)
-        {
-            position startingPosition = new position(0,0,'N');
-            position pos = startingPosition;
+            //var uri = new System.Uri(@"http://adventofcode.com/2016/day/1/input");
+            //var webClient = new WebClient();
+            //String text = webClient.DownloadString(uri);
 
-            Console.Out.WriteLine("Starting position: " + startingPosition.ToString());
-            string text = File.ReadAllText(@"C:\Users\Z236\Documents\adventofcode\Day1input.txt");
-            //string text = File.ReadAllText(@"C:\Users\Z236\Documents\adventofcode\Day1test.txt");
+            String text = File.ReadAllText("Day1input.txt");
+            //string text = File.ReadAllText("Day1test.txt");
             string[] instructions = text.Split(',');
 
-            foreach (var instruction in instructions)
-            {
+            foreach(var instruction in instructions) {
                 //Console.WriteLine(instruction);
-                switch (instruction[0])
-                {
+                switch (instruction[0]) {
                     case 'R':
                         pos = MoveRight(pos, Convert.ToInt32(instruction.Substring(1)));
                         break;
@@ -66,13 +61,14 @@ namespace ConsoleApplication1
             }
             Console.WriteLine("Final Position:");
             Console.Out.WriteLine(pos.ToString());
+            Console.WriteLine("Total Distance:");
+            Console.Out.WriteLine(Math.Abs(pos.X) + Math.Abs(pos.Y));
 
             Console.WriteLine("First Duplicate:");
             var duplicateKeys = AllPostions.GroupBy(x => x)
-                        .Where(group => group.Count() > 1)
-                        .Select(group => group.Key);
-            foreach (var duplicate in duplicateKeys)
-            {
+                .Where(group => group.Count() > 1)
+                .Select(group => group.Key);
+            foreach(var duplicate in duplicateKeys) {
                 Console.WriteLine(duplicate);
                 break;
             }
@@ -82,44 +78,31 @@ namespace ConsoleApplication1
             pos = MoveRight(pos, 5);
             pos = MoveRight(pos, 3);
             */
-            
-            
+
             Console.In.Read();
         }
 
-        static public position MoveRight(position pos, int distance)
-        {
-            if (pos.Direction == 'N')
-            {
-                for (int i = 0; i < distance; i++)
-                {
+        static public Position MoveRight(Position pos, int distance) {
+            if (pos.Direction == 'N') {
+                for (int i = 0; i < distance; i++) {
                     pos.X += 1;
                     AllPostions.Add(pos.ToString());
                 }
                 pos.Direction = 'E';
-            }
-            else if (pos.Direction == 'S')
-            {
-                for (int i = 0; i < distance; i++)
-                {
+            } else if (pos.Direction == 'S') {
+                for (int i = 0; i < distance; i++) {
                     pos.X -= 1;
                     AllPostions.Add(pos.ToString());
                 }
                 pos.Direction = 'W';
-            }
-            else if (pos.Direction == 'E')
-            {
-                for (int i = 0; i < distance; i++)
-                {
+            } else if (pos.Direction == 'E') {
+                for (int i = 0; i < distance; i++) {
                     pos.Y -= 1;
                     AllPostions.Add(pos.ToString());
                 }
                 pos.Direction = 'S';
-            }
-            else if (pos.Direction == 'W')
-            {
-                for (int i = 0; i < distance; i++)
-                {
+            } else if (pos.Direction == 'W') {
+                for (int i = 0; i < distance; i++) {
                     pos.Y += 1;
                     AllPostions.Add(pos.ToString());
                 }
@@ -130,39 +113,27 @@ namespace ConsoleApplication1
             return pos;
         }
 
-        static public position MoveLeft(position pos, int distance)
-        {
-            if (pos.Direction == 'N')
-            {
-                for (int i = 0; i < distance; i++)
-                {
+        static public Position MoveLeft(Position pos, int distance) {
+            if (pos.Direction == 'N') {
+                for (int i = 0; i < distance; i++) {
                     pos.X -= 1;
                     AllPostions.Add(pos.ToString());
                 }
                 pos.Direction = 'W';
-            }
-            else if (pos.Direction == 'S')
-            {
-                for (int i = 0; i < distance; i++)
-                {
+            } else if (pos.Direction == 'S') {
+                for (int i = 0; i < distance; i++) {
                     pos.X += 1;
                     AllPostions.Add(pos.ToString());
                 }
                 pos.Direction = 'E';
-            }
-            else if (pos.Direction == 'E')
-            {
-                for (int i = 0; i < distance; i++)
-                {
+            } else if (pos.Direction == 'E') {
+                for (int i = 0; i < distance; i++) {
                     pos.Y += 1;
                     AllPostions.Add(pos.ToString());
                 }
                 pos.Direction = 'N';
-            }
-            else if (pos.Direction == 'W')
-            {
-                for (int i = 0; i < distance; i++)
-                {
+            } else if (pos.Direction == 'W') {
+                for (int i = 0; i < distance; i++) {
                     pos.Y -= 1;
                     AllPostions.Add(pos.ToString());
                 }
