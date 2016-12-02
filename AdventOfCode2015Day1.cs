@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Net;
 using System.IO;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace ConsoleApplication1
@@ -9,7 +8,7 @@ namespace ConsoleApplication1
     class AdventOfCode2015Day1
     {
 
-        static void Main(string[] args)
+        static void Code2015Day1(string[] args)
         {
             int pos = 0;
             Console.Out.WriteLine("Starting position: " + pos);
@@ -18,7 +17,7 @@ namespace ConsoleApplication1
             //var webClient = new WebClient();
             //String text = webClient.DownloadString(uri);
 
-            String text = File.ReadAllText(@"C:\Users\Z236\Documents\adventofcode\Day1input.txt");
+            String text = File.ReadAllText(@"C:\Users\Z236\Documents\adventofcode\2015Day1input.txt");
             //string text = File.ReadAllText(@"C:\Users\Z236\Documents\adventofcode\Day1test.txt");
 
 

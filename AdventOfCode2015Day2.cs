@@ -26,7 +26,7 @@ namespace ConsoleApplication1
 
         }
 
-        static void Main(string[] args)
+        static void Code2015Day2(string[] args)
         {
             int total = 0;
             //var uri = new System.Uri(@"http://adventofcode.com/2015/day/2/input");
