@@ -49,7 +49,7 @@ namespace ConsoleApplication1
             }
         }
 
-        static void Main(string[] args)
+        static void Code2015Day6(string[] args)
         {
             List<Light> lights = new List<Light>();
             int index = 0;
