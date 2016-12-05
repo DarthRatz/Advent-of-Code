@@ -10,11 +10,6 @@
     {
         static void Code2015Day4(string[] args)
         {
-
-            //var uri = new System.Uri(@"http://adventofcode.com/2015/day/4/input");
-            //var webClient = new WebClient();
-            //String text = webClient.DownloadString(uri);
-
             //String secret = "abcdef";
             //String secret = "pqrstuv";
             String secret = "bgvyzdsv";
