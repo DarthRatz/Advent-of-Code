@@ -1,10 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="AdventOfCode2015Day5.cs" company="Microsoft">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace ConsoleApplication1
+﻿namespace ConsoleApplication1
 {
     using System;
     using System.Collections.Generic;
@@ -13,9 +7,6 @@ namespace ConsoleApplication1
     using System.Text;
     using System.Text.RegularExpressions;
 
-    /// <summary>
-    /// TODO: Update summary.
-    /// </summary>
     public class AdventOfCode2015Day5
     {
         static void Code2015Day5(string[] args)
